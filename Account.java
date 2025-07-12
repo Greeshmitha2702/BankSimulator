@@ -3,10 +3,15 @@ public class Account {
     private int accountNumber;
     private String accountHolderName;
     private double balance;
-    public Account(String accountHolderName, double initialBalance) {
+    private String password;
+    public boolean checkPassword(String inputPassword) {
+        return this.password != null && this.password.equals(inputPassword);
+    }
+    public Account(String accountHolderName, double initialBalance,String password) {
         this.accountNumber = ++counter;
         this.accountHolderName = accountHolderName;
         this.balance = initialBalance;
+        this.password = password;
     }
     public int getAccountNumber() {
         return accountNumber;

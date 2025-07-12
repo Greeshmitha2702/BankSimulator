@@ -18,7 +18,9 @@ public class Main{
                     String name = scanner.next();
                     System.out.print("Enter initial balance: ");
                     double initialBalance = scanner.nextDouble();
-                    Account newAccount = new Account(name, initialBalance);
+                    System.out.println("Enter password:");
+                    String password = scanner.next();
+                    Account newAccount = new Account(name, initialBalance, password);
                     accounts.add(newAccount);
                     System.out.println("Account created successfully! Account Number: " + newAccount.getAccountNumber());
                     break;
@@ -34,6 +36,12 @@ public class Main{
                     }
                     if(account1 == null) {
                         System.out.println("Account not found.");
+                        continue;
+                    }
+                    System.out.print("Enter password: ");
+                    String inputPassword = scanner.next();
+                    if (!account1.checkPassword(inputPassword)) {
+                        System.out.println("Incorrect password. Access denied.");
                         continue;
                     }
                     System.out.print("Enter amount to deposit: ");
@@ -54,6 +62,12 @@ public class Main{
                         System.out.println("Account not found.");
                         continue;
                     }
+                    System.out.print("Enter password: ");
+                    String inputPassword1 = scanner.next();
+                    if (!Account1.checkPassword(inputPassword1)) {
+                        System.out.println("Incorrect password. Access denied.");
+                        continue;
+                    }
                     System.out.print("Enter amount to withdraw: ");
                     double withdrawAmount = scanner.nextDouble();
                     Account1.withdraw(withdrawAmount);
@@ -70,6 +84,12 @@ public class Main{
                     }
                     if(displayAccount == null) {
                         System.out.println("Account not found.");
+                        continue;
+                    }
+                    System.out.print("Enter password: ");
+                    String inputPassword2 = scanner.next();
+                    if (!displayAccount.checkPassword(inputPassword2)) {
+                        System.out.println("Incorrect password. Access denied.");
                         continue;
                     }
                     displayAccount.displayAccountInfo();
