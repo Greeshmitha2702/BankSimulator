@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.Console;
 public class Main{
     public static void main(String[] args) {
         System.out.println("Welcome to the bank management system!");
@@ -18,9 +19,14 @@ public class Main{
                     String name = scanner.next();
                     System.out.print("Enter initial balance: ");
                     double initialBalance = scanner.nextDouble();
-                    System.out.println("Enter password:");
-                    String password = scanner.next();
-                    Account newAccount = new Account(name, initialBalance, password);
+                    Console console3 = System.console();
+                    if (console3 == null) {
+                        System.out.println("No console available. Please run this program in a terminal.");
+                        continue;
+                    }
+                    char[] passwordChars3 = console3.readPassword("Enter password: ");
+                    String inputPassword3 = new String(passwordChars3);
+                    Account newAccount = new Account(name, initialBalance, inputPassword3);
                     accounts.add(newAccount);
                     System.out.println("Account created successfully! Account Number: " + newAccount.getAccountNumber());
                     break;
@@ -38,8 +44,13 @@ public class Main{
                         System.out.println("Account not found.");
                         continue;
                     }
-                    System.out.print("Enter password: ");
-                    String inputPassword = scanner.next();
+                    Console console = System.console();
+                    if (console == null) {
+                        System.out.println("No console available. Please run this program in a terminal.");
+                        continue;
+                    }
+                    char[] passwordChars = console.readPassword("Enter password: ");
+                    String inputPassword = new String(passwordChars);
                     if (!account1.checkPassword(inputPassword)) {
                         System.out.println("Incorrect password. Access denied.");
                         continue;
@@ -62,8 +73,13 @@ public class Main{
                         System.out.println("Account not found.");
                         continue;
                     }
-                    System.out.print("Enter password: ");
-                    String inputPassword1 = scanner.next();
+                    Console console1 = System.console();
+                    if (console1 == null) {
+                        System.out.println("No console available. Please run this program in a terminal.");
+                        continue;
+                    }
+                    char[] passwordChars1 = console1.readPassword("Enter password: ");
+                    String inputPassword1 = new String(passwordChars1);
                     if (!Account1.checkPassword(inputPassword1)) {
                         System.out.println("Incorrect password. Access denied.");
                         continue;
@@ -86,8 +102,13 @@ public class Main{
                         System.out.println("Account not found.");
                         continue;
                     }
-                    System.out.print("Enter password: ");
-                    String inputPassword2 = scanner.next();
+                    Console console2 = System.console();
+                    if (console2 == null) {
+                        System.out.println("No console available. Please run this program in a terminal.");
+                        continue;
+                    }
+                    char[] passwordChars2 = console2.readPassword("Enter password: ");
+                    String inputPassword2 = new String(passwordChars2);
                     if (!displayAccount.checkPassword(inputPassword2)) {
                         System.out.println("Incorrect password. Access denied.");
                         continue;
